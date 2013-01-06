@@ -1,0 +1,18 @@
+package network;
+
+option java_package = "org.sharif.ce.firerclient.network";
+option optimize_for = LITE_RUNTIME;
+
+message NetGpsPoint
+{
+optional double lat = 1;
+optional double lng = 2;
+optional double alt = 3;
+
+optional string timeTag = 4;
+optional int32 wayId = 5;
+}
+
+message NetWayPoint {
+repeated NetGpsPoint gpsPoints = 1;
+}
