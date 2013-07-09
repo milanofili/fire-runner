@@ -15,4 +15,7 @@ optional int32 wayId = 5;
 
 message NetWayPoint {
 repeated NetGpsPoint gpsPoints = 1;
+optional string username = 2;
+optional string password = 3;
+optional double weight = 4;
 }

@@ -564,6 +564,18 @@ public final class NetMessages {
         getGpsPointsList();
     org.sharif.ce.firerclient.network.NetMessages.NetGpsPoint getGpsPoints(int index);
     int getGpsPointsCount();
+    
+    // optional string username = 2;
+    boolean hasUsername();
+    String getUsername();
+    
+    // optional string password = 3;
+    boolean hasPassword();
+    String getPassword();
+    
+    // optional double weight = 4;
+    boolean hasWeight();
+    double getWeight();
   }
   public static final class NetWayPoint extends
       com.google.protobuf.GeneratedMessageLite
@@ -583,6 +595,7 @@ public final class NetMessages {
       return defaultInstance;
     }
     
+    private int bitField0_;
     // repeated .network.NetGpsPoint gpsPoints = 1;
     public static final int GPSPOINTS_FIELD_NUMBER = 1;
     private java.util.List<org.sharif.ce.firerclient.network.NetMessages.NetGpsPoint> gpsPoints_;
@@ -604,8 +617,85 @@ public final class NetMessages {
       return gpsPoints_.get(index);
     }
     
+    // optional string username = 2;
+    public static final int USERNAME_FIELD_NUMBER = 2;
+    private java.lang.Object username_;
+    public boolean hasUsername() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          username_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // optional string password = 3;
+    public static final int PASSWORD_FIELD_NUMBER = 3;
+    private java.lang.Object password_;
+    public boolean hasPassword() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          password_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // optional double weight = 4;
+    public static final int WEIGHT_FIELD_NUMBER = 4;
+    private double weight_;
+    public boolean hasWeight() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public double getWeight() {
+      return weight_;
+    }
+    
     private void initFields() {
       gpsPoints_ = java.util.Collections.emptyList();
+      username_ = "";
+      password_ = "";
+      weight_ = 0D;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -622,6 +712,15 @@ public final class NetMessages {
       for (int i = 0; i < gpsPoints_.size(); i++) {
         output.writeMessage(1, gpsPoints_.get(i));
       }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(2, getUsernameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(3, getPasswordBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeDouble(4, weight_);
+      }
     }
     
     private int memoizedSerializedSize = -1;
@@ -633,6 +732,18 @@ public final class NetMessages {
       for (int i = 0; i < gpsPoints_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, gpsPoints_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getUsernameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getPasswordBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, weight_);
       }
       memoizedSerializedSize = size;
       return size;
@@ -738,6 +849,12 @@ public final class NetMessages {
         super.clear();
         gpsPoints_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
+        username_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        password_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        weight_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -770,11 +887,25 @@ public final class NetMessages {
       public org.sharif.ce.firerclient.network.NetMessages.NetWayPoint buildPartial() {
         org.sharif.ce.firerclient.network.NetMessages.NetWayPoint result = new org.sharif.ce.firerclient.network.NetMessages.NetWayPoint(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           gpsPoints_ = java.util.Collections.unmodifiableList(gpsPoints_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.gpsPoints_ = gpsPoints_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.username_ = username_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.password_ = password_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.weight_ = weight_;
+        result.bitField0_ = to_bitField0_;
         return result;
       }
       
@@ -789,6 +920,15 @@ public final class NetMessages {
             gpsPoints_.addAll(other.gpsPoints_);
           }
           
+        }
+        if (other.hasUsername()) {
+          setUsername(other.getUsername());
+        }
+        if (other.hasPassword()) {
+          setPassword(other.getPassword());
+        }
+        if (other.hasWeight()) {
+          setWeight(other.getWeight());
         }
         return this;
       }
@@ -818,6 +958,21 @@ public final class NetMessages {
               org.sharif.ce.firerclient.network.NetMessages.NetGpsPoint.Builder subBuilder = org.sharif.ce.firerclient.network.NetMessages.NetGpsPoint.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addGpsPoints(subBuilder.buildPartial());
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              username_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              password_ = input.readBytes();
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              weight_ = input.readDouble();
               break;
             }
           }
@@ -911,6 +1066,99 @@ public final class NetMessages {
       public Builder removeGpsPoints(int index) {
         ensureGpsPointsIsMutable();
         gpsPoints_.remove(index);
+        
+        return this;
+      }
+      
+      // optional string username = 2;
+      private java.lang.Object username_ = "";
+      public boolean hasUsername() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setUsername(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        username_ = value;
+        
+        return this;
+      }
+      public Builder clearUsername() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        username_ = getDefaultInstance().getUsername();
+        
+        return this;
+      }
+      void setUsername(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
+        username_ = value;
+        
+      }
+      
+      // optional string password = 3;
+      private java.lang.Object password_ = "";
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          password_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setPassword(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        password_ = value;
+        
+        return this;
+      }
+      public Builder clearPassword() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        password_ = getDefaultInstance().getPassword();
+        
+        return this;
+      }
+      void setPassword(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        password_ = value;
+        
+      }
+      
+      // optional double weight = 4;
+      private double weight_ ;
+      public boolean hasWeight() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public double getWeight() {
+        return weight_;
+      }
+      public Builder setWeight(double value) {
+        bitField0_ |= 0x00000008;
+        weight_ = value;
+        
+        return this;
+      }
+      public Builder clearWeight() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        weight_ = 0D;
         
         return this;
       }

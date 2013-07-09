@@ -1,10 +1,24 @@
 # Java Files #
 *.class
 
+
 # Package Files #
 #*.jar
 #*.war
 #*.ear
+
+# c++
+*.lo
+*.a
+*.o
+*.Po
+*.Plo
+*.la
+*.dylib
+
+# python
+*.pyc
+
 
 # Mac Files #
 .DS_Store

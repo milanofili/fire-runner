@@ -3,61 +3,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
+<TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="173dp"
-        android:orientation="vertical" >
+        android:paddingTop="50dip"
+        android:stretchColumns="1" >
+
+	      <TableRow>
+
+	        <TextView
+	            android:id="@+id/calloriesTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_toLeftOf="@+id/stopButton"
+	            android:paddingLeft="70dip"
+	            android:text="Callories: 0"
+	            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	      </TableRow>
+	    <TableRow>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/distanceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_below="@+id/calloriesTextView"
+            android:layout_marginTop="27dp"
+            android:layout_toLeftOf="@+id/stopButton"
+            android:paddingLeft="70dip"
+            android:text="Distances: 0"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    </LinearLayout>
+  		</TableRow>
+	    <TableRow>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        <Chronometer
+            android:id="@+id/elapsedTimeChronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/distanceTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="51dp"
+            android:paddingLeft="140dip"
+            android:text="" />
+	    
+	     </TableRow>
+	     
+    </TableLayout>
+    
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="150dip">
+	      
+		<TableRow >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:onClick="getPoint"
-        android:text="Button" />
+			<Button
+			    android:id="@+id/startButton"
+			    android:layout_marginLeft="100dip"
+			    android:gravity="center_vertical|center_horizontal|left"
+			    android:onClick="startButtonClicked"
+			    android:text="Start"
+			    android:textColor="@color/green"
+			    android:textColorLink="@color/green" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/linearLayout1"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="49dp"
-        android:onClick="dbTest"
-        android:text="DB Test" />
+        	<Button
+        	    android:id="@+id/stopButton"
+        	    android:layout_marginLeft="20dip"
+        	    android:onClick="stopButtonClicked"
+        	    android:text="Stop"
+        	    android:textColor="@color/red" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+		</TableRow>   
+		
+		</TableLayout>
+	  	    
+		
+		 <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="42dp"
-        android:onClick="netTest"
-        android:text="Net Test" />
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="5dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip">
+		
+		<TableRow >
+
+		</TableRow>
+    </TableLayout>
+
+        
+	
+        
+
+      
+
+                
 
 </RelativeLayout>
