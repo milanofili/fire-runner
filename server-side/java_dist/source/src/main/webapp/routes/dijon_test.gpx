@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<gpx version="1.0" creator="Viking -- http://viking.sf.net/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.topografix.com/GPX/1/0"
+xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<wpt lat="47.302192" lon="5.084426">
+  <name>This is the first test</name>
+</wpt>
+<wpt lat="47.304915" lon="5.079189">
+  <name>A test ...</name>
+  <desc>With a description</desc>
+</wpt>
+<wpt lat="47.303313" lon="5.090080">
+  <name>New test with a picture</name>
+  <desc><![CDATA[This is the logo of openlayers:<br /><img src="OpenLayers.trac.png" alt="logo" />]]></desc>
+</wpt>
+<trk>
+  <name>VOILA</name>
+  <trkseg>
+  <trkpt lat="47.301100" lon="5.083060">
+  </trkpt>
+  <trkpt lat="47.304801" lon="5.087386">
+  </trkpt>
+  <trkpt lat="47.304918" lon="5.080935">
+  </trkpt>
+  <trkpt lat="47.306459" lon="5.083324">
+  </trkpt>
+  <trkpt lat="47.306113" lon="5.088496">
+  </trkpt>
+  <trkpt lat="47.301070" lon="5.086710">
+  </trkpt>
+  <trkpt lat="47.303182" lon="5.081396">
+  </trkpt>
+  <trkpt lat="47.302785" lon="5.081486">
+  </trkpt>
+</trkseg>
+</trk>
+<trk>
+  <name>TEST2</name>
+  <trkseg>
+  <trkpt lat="47.308342" lon="5.082710">
+  </trkpt>
+  <trkpt lat="47.303793" lon="5.079462">
+  </trkpt>
+  <trkpt lat="47.304239" lon="5.086623">
+  </trkpt>
+  <trkpt lat="47.301170" lon="5.091106">
+  </trkpt>
+  <trkpt lat="47.301170" lon="5.091106">
+  </trkpt>
+</trkseg>
+</trk>
+<trk>
+  <name>TEST</name>
+  <trkseg>
+  <trkpt lat="47.299623" lon="5.089087">
+  </trkpt>
+  <trkpt lat="47.302857" lon="5.087415">
+  </trkpt>
+  <trkpt lat="47.303042" lon="5.083189">
+  </trkpt>
+  <trkpt lat="47.305308" lon="5.083278">
+  </trkpt>
+  <trkpt lat="47.305936" lon="5.086319">
+  </trkpt>
+  <trkpt lat="47.307499" lon="5.083523">
+  </trkpt>
+  <trkpt lat="47.305367" lon="5.080000">
+  </trkpt>
+  <trkpt lat="47.305367" lon="5.080000">
+  </trkpt>
+  <trkpt lat="47.307601" lon="5.081887">
+  </trkpt>
+</trkseg>
+</trk>
+<trk>
+  <name>MANGER</name>
+  <trkseg>
+  <trkpt lat="47.303901" lon="5.089361">
+  </trkpt>
+</trkseg>
+</trk>
+<wpt lat="47.303901" lon="5.089361"><link>img/marker-point.png</link></wpt>
+<wpt lat="47.301100" lon="5.083060"><link>img/marker-begin.png</link></wpt>
+<wpt lat="47.307601" lon="5.081887"><link>img/marker-end.png</link></wpt>
+</gpx>

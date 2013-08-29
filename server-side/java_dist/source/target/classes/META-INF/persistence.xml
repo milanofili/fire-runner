@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="org.sharif.ce.firerunnerbackends_FireRunnerBackends_war_1.0-SNAPSHOTPU" transaction-type="JTA">
+    
+   
+    <class>org.org.sharif.ce.firerunnerbackends.User</class>
+    <class>orgorg.sharif.ce.firerunnerbackends.Ways</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/firerunnerdb" />
+            <property name="javax.persistence.jdbc.user" value="firerunner" />
+            <property name="javax.persistence.jdbc.password" value="12345" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+</properties>
+  </persistence-unit>
+</persistence>
