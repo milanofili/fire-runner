@@ -52,6 +52,6 @@ public class SettingManager {
 	public String getServerAddress() {
 		SharedPreferences settings = activity.getSharedPreferences(PREF_NAME, 0);
 		
-		return settings.getString("serverAddress", "192.168.1.2:8004");
+		return settings.getString("serverAddress", "10.0.2.2:8080");
 	}
 }

@@ -43,10 +43,9 @@ public class GpsPointsSender {
 	
 	public void connect(String host, int port) {
 		
-		
 		try {
-			
 			sockettoRemoteEndPoint = new Socket(host, port);
+			
 			inputStream = new DataInputStream(sockettoRemoteEndPoint.getInputStream());
 			outputStream = new DataOutputStream(sockettoRemoteEndPoint.getOutputStream());
 			
@@ -66,10 +65,6 @@ public class GpsPointsSender {
 			e.printStackTrace();
 			delegate.errorOccurred(e.getMessage());
 		}
-		
-		
-		
-		
 	}
 	
 	public void close() {

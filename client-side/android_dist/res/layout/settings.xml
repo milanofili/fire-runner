@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
     
     <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+       
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="100dip"
@@ -21,13 +21,14 @@
 	            android:id="@+id/addressEditText"
 	        	android:inputType="textWebEditText" />
 	   	   
+	   	   </TableRow>
+	   	   <TableRow >
 	   	   <Button
 	   	       android:id="@+id/synchButton"
-	   	       android:layout_marginLeft="5dip"
-	   	       android:layout_marginRight="5dip"
-	   	       android:background="@drawable/refresh"
-	   	       android:paddingLeft="5dip"
-	   	       android:paddingRight="5dip"
+	   	       android:layout_marginLeft="20dip"
+	   	       android:layout_marginRight="20dip"
+	   	       android:text="Send"
+	   	       			    android:layout_width="fill_parent"
 	   	       android:onClick="uploadRemainedData"
 	   	        />
 	    
@@ -36,7 +37,7 @@
     </TableLayout>
 
     <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

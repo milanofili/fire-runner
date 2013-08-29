@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
 <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50dip"
@@ -54,7 +54,7 @@
     </TableLayout>
     
     <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -77,6 +77,12 @@
         	    android:onClick="stopButtonClicked"
         	    android:text="Stop"
         	    android:textColor="@color/red" />
+        	<Button
+        	    android:id="@+id/testButton"
+        	    android:layout_marginLeft="20dip"
+        	    android:onClick="testButtonClicked"
+        	    android:text="Test"
+        	    android:textColor="@color/red" />
 
 		</TableRow>   
 		
@@ -84,7 +90,7 @@
 	  	    
 		
 		 <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+       
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

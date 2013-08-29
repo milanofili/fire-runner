@@ -1,6 +1,11 @@
 package org.sharif.ce.firerclient.model;
 
 import java.util.Date;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.R.string;
 
@@ -12,7 +17,7 @@ public class GpsPoint {
 	
 	private double altitude;
 	
-	private Date timeTag;
+	private String timeTag;
 	
 	private int wayId;
 
@@ -40,11 +45,11 @@ public class GpsPoint {
 		this.altitude = altitude;
 	}
 
-	public Date getTimeTag() {
+	public String getTimeTag() {
 		return timeTag;
 	}
 
-	public void setTimeTag(Date timeTag) {
+	public void setTimeTag(String timeTag) {
 		this.timeTag = timeTag;
 	}
 
@@ -60,5 +65,23 @@ public class GpsPoint {
 	public String toString() {
 		return "lat: " + latitude + "| long: " + longitude + "| alt: " + altitude
 				+ "| wayid:" + wayId + " in time:" + timeTag.toString();
+	}
+	
+	public static String getJson(List<GpsPoint> ps) throws JSONException {
+		
+		JSONArray points = new JSONArray();
+		for (int i =0 ; i < ps.size() ; i++) {
+			JSONObject node = new JSONObject();
+			node.put("lat", ps.get(i).getLatitude());
+			node.put("lng", ps.get(i).getLongitude());
+			node.put("alt", ps.get(i).getAltitude());
+			node.put("timetag", ps.get(i).getTimeTag());
+			node.put("wayid", ps.get(i).getWayId());
+			points.put(node);
+		}
+		
+		JSONObject mainObj = new JSONObject();
+		mainObj.put("points", points);
+		return mainObj.toString();
 	}
 }

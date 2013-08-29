@@ -70,8 +70,7 @@ public class DBGpsPoint {
 		gp.setLatitude(cursor.getDouble(1));
 		gp.setLongitude(cursor.getDouble(2));
 		gp.setAltitude(cursor.getDouble(3));
-		Date dt = new Date(cursor.getString(4));
-		gp.setTimeTag(dt);
+		gp.setTimeTag(cursor.getString(4));
 		gp.setWayId(cursor.getInt(5));
 		
 		return gp;
