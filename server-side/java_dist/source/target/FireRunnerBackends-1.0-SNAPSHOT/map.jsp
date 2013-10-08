@@ -47,11 +47,11 @@
         <link href="./css/bootstrap-responsive.css" rel="stylesheet">
         <link href="./css/bootstrap.css" rel="stylesheet">
         <link href="./theme/default/style.css" rel="stylesheet">
-
+       
         <script src="./js/jquery.js"></script>
         <script src="./js/bootstrap.js"></script>
         <script src="./OpenLayers.js"></script>
-
+        
 
 
 
@@ -74,8 +74,8 @@
                     <a class="brand" href="#">Fire Runner</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="<% out.print("/FireRunnerBackends/list.jsp?userid="+username); %>">Home</a></li>
-                            <li><a href="#myModal" data-toggle="modal">About</a></li>
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -84,60 +84,40 @@
         </div>
 
         <div class="container" >
-            <div id="Map" style="height: 600px;"></div>
-
-            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">About me</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Fire Runner is version 1.0 </p>
-                    <br />
-                    <p>Copy rights reserved by computer engineering department of Sharif university of technology 2012-2013</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    
-                </div>
-            </div>
+        <div id="Map" style="height: 600px;"></div>
         </div>
 
         <script src="OpenLayers.js"></script>
         <script>
-        var lat = 47.35387;
-        var lon = 8.43609;
-        var zoom = 18;
+            var lat = 47.35387;
+            var lon = 8.43609;
+            var zoom = 18;
 
-        var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        //var position = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+            var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            //var position = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
 
-        map = new OpenLayers.Map("Map");
-        var mapnik = new OpenLayers.Layer.OSM();
-        map.addLayer(mapnik);
-
-
-
-        var lgpx = new OpenLayers.Layer.Vector("Way1", {
-            strategies: [new OpenLayers.Strategy.Fixed()],
-            protocol: new OpenLayers.Protocol.HTTP({
-                url: '<% out.print("./routes/"+filename); %>',
-                format: new OpenLayers.Format.GPX({extractWaypoints: true, extractRoutes: true, extractAttributes: true})
-            }),
-            style: {strokeColor: "green", strokeWidth: 5, strokeOpacity: 0.5},
-            projection: new OpenLayers.Projection("EPSG:4326")
-        });
-        map.addLayer(lgpx);
-
-
-        lgpx.events.register('loadend', lgpx, function(evt) {
-            map.zoomToExtent(lgpx.getDataExtent())
-        });
-
-        var bounds = lgpx.getDataExtent();
-        map.zoomToExtent(bounds);
-
+            map = new OpenLayers.Map("Map");
+            var mapnik = new OpenLayers.Layer.OSM();
+            map.addLayer(mapnik);
+            
+            var lgpx = new OpenLayers.Layer.Vector("Way1", {
+				strategies: [new OpenLayers.Strategy.Fixed()],
+				protocol: new OpenLayers.Protocol.HTTP({
+					url: '<% out.print("./routes/"+filename); %>',
+					format: new OpenLayers.Format.GPX({extractWaypoints: true, extractRoutes: true, extractAttributes: true})
+				}),
+				style: {strokeColor: "green", strokeWidth: 5, strokeOpacity: 0.5},
+				projection: new OpenLayers.Projection("EPSG:4326")
+			});
+            map.addLayer(lgpx);
+            
+            
+            lgpx.events.register('loadend', lgpx, function(evt){map.zoomToExtent(lgpx.getDataExtent())});
+            
+            var bounds = lgpx.getDataExtent();
+            map.zoomToExtent(bounds);
+            
         </script>
     </body>
 </html>

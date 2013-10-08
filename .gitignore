@@ -1,4 +1,6 @@
 # Java Files #
+*.war
+*.apk
 *.class
 
 

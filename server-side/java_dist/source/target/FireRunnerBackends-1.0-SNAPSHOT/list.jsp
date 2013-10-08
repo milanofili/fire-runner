@@ -56,8 +56,8 @@
                     <a class="brand" href="#">Fire Runner</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#" >Home</a></li>
-                            <li><a href="#myModal" data-toggle="modal">About</a></li>
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -97,25 +97,10 @@
                         out.print("</tr>");
                     }
                 %>
-
+                
             </table>
 
         </div> 
 
-        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">About me</h3>
-            </div>
-            <div class="modal-body">
-                <p>Fire Runner is version 1.0 </p>
-                <br />
-                <p>Copy rights reserved by computer engineering department of Sharif university of technology 2012-2013</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-
-            </div>
-        </div>
     </body>
 </html>
