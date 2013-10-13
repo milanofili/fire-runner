@@ -21,19 +21,25 @@ public class DBGpsPoint {
 	      , DBConnection.GPS_POINT_DATABASE_ALT, DBConnection.GPS_POINT_DATABASE_TIME_TAG
 	      , DBConnection.GPS_POINT_DATABASE_WAY_ID};
 	
+	/// Create db gps point from database
 	public DBGpsPoint (Context context) {
 		dbHelper = new DBConnection(context);
 	}
 	
+	/// Open gps point database
 	public void open() throws SQLException {
 	    database = dbHelper.getWritableDatabase();
 	}
 	
+	/// Close gps point database
 	public void close() {
 	    dbHelper.close();
 	}
 
-	
+	/**
+	 * The function saves the gps point
+	 * @param p the point needs to save
+	 */
 	public void savePoint (GpsPoint p) {
 		ContentValues values = new ContentValues();
 		values.put(DBConnection.GPS_POINT_DATABASE_LAT, p.getLatitude());
@@ -46,6 +52,10 @@ public class DBGpsPoint {
 		database.insert(DBConnection.GPS_POINT_DATABASE_NAME, null, values);
 	}
 	
+	/**
+	 * Get latest list of gpspoint
+	 * @return
+	 */
 	public List<GpsPoint> getPointsbyWayId () {
 		List<GpsPoint> ret = new ArrayList<GpsPoint>();
 		
@@ -64,6 +74,11 @@ public class DBGpsPoint {
 		return ret;
 	}
 	
+	/**
+	 * Create gps point from cursor
+	 * @param cursor database cursor
+	 * @return gpspoint is converted from cursor
+	 */
 	public GpsPoint cursorToGpsPoint(Cursor cursor) {
 		GpsPoint gp = new GpsPoint();
 		

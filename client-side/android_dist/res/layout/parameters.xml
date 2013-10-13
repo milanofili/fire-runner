@@ -22,6 +22,18 @@
 	        	android:inputType="numberDecimal" />
 	    
 	     </TableRow>
+	     <TableRow>
+	        <TextView
+	            android:id="@+id/usernameTextView"
+	            android:paddingLeft="5dip"
+	            android:paddingRight="10dip"
+	            android:text="Username" />
+	
+	   	   <EditText
+	            android:id="@+id/usernameEditText"
+	        	/>
+	    
+	     </TableRow>
 	     
     </TableLayout>
        

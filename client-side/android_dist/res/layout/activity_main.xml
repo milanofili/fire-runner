@@ -77,12 +77,6 @@
         	    android:onClick="stopButtonClicked"
         	    android:text="Stop"
         	    android:textColor="@color/red" />
-        	<Button
-        	    android:id="@+id/testButton"
-        	    android:layout_marginLeft="20dip"
-        	    android:onClick="testButtonClicked"
-        	    android:text="Test"
-        	    android:textColor="@color/red" />
 
 		</TableRow>   
 		
