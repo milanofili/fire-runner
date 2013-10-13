@@ -51,23 +51,47 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * God page to all activities from ui view
+ * @author milano
+ */
 public class MainActivity extends Activity implements IGpsLocationListener,
 		IGpsPointsSender {
 
+	/// Listener for gps location changes
 	public GpsLocationListener locator;
+
+	/// Total computed distance on latest start
 	public double totalDistances;
+
+    /// Total computed callories on latest start
 	public double totalCallories;
 
+    /// Last Latitude
 	public double lastLat;
+
+    /// Last longitude
 	public double lastLng;
+
+    /// Last altitude
 	public double lastAlt;
+
+    /// Check is started or not
 	public boolean isStarted;
+
+    /// First location before 
 	public boolean firstLoc;
+
+    /// Keep last way id
 	public long lastWayId;
 
+    /// Weight 
 	public double weight = 70.0;
+
+    /// Location manager for testing purpose
 	LocationManager mlocManager;
 
+    /// Progress dialog
 	public ProgressDialog dialog;
 
 	@Override
@@ -114,16 +138,19 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 
 	}
 
+    /// Update callories format by total computed callories
 	public void updateCaloriesUI() {
 		TextView view = (TextView) findViewById(R.id.calloriesTextView);
 		view.setText(String.format("Calories: %.3f cal", totalCallories));
 	}
 
+    /// Update distance format by last computed callories
 	public void updateDistanceUI() {
 		TextView view = (TextView) findViewById(R.id.distanceTextView);
 		view.setText(String.format("Distances: %.3f km", totalDistances));
 	}
 
+    /// Pre-steps before stopping
 	public void prepareUIforStopping() {
 		isStarted = false;
 		Button stopBT = (Button) findViewById(R.id.stopButton);
@@ -136,6 +163,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		ch.stop();
 	}
 
+    /// It will be called before creation menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!isStarted) {
@@ -146,6 +174,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		return true;
 	}
 
+    /// It will be called after an item is selected on menu
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_settings: {
@@ -166,6 +195,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		return true;
 	}
 
+    /// Convert http entity to string
 	protected String getASCIIContentFromEntity(HttpEntity entity)
 			throws IllegalStateException, IOException {
 
@@ -187,6 +217,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 
 	}
 
+    //~~~~~~~~~~~ test ~~~~~~~~~~~~//
 	public void testClick(View view) {
 		TextView et = (TextView) findViewById(R.id.logview);
 		
@@ -202,7 +233,8 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		}
 		
 	}
-
+    
+    /// Request to location for new location
 	public void getPoint(View view) {
 		locator = new GpsLocationListener(this);
 		LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -212,6 +244,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 
 	}
 
+    /// Upload remained data
 	public void uploadRemainedData(View view) {
 		dialog = ProgressDialog.show(this, "",
 				"Loading. Please wait to upload...", true);
@@ -232,6 +265,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		}
 	}
 
+    //// It will be called when start button clicked
 	public void startButtonClicked(View view) {
 		
 		dialog = ProgressDialog.show(this, "",
@@ -246,78 +280,31 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		firstLoc = true;
 	}
 
+    /// It will be called when stop button clicked
 	public void stopButtonClicked(View view) {
 		prepareUIforStopping();
 		locator = null;
 		mlocManager = null;
 	}
 
+    /// It will be called when test button is clicked
 	public void testButtonClicked(View view) {
 		prepareUIforStopping();
 		setContentView(R.layout.test_layout);
 	}
 
-	public void dbTest(View view) {
-		{
-			DBGpsPoint dbp = new DBGpsPoint(this.getApplicationContext());
-
-			dbp.open();
-
-			GpsPoint gp = new GpsPoint();
-			gp.setAltitude(1.2);
-			gp.setLatitude(1.3);
-			gp.setLongitude(1.4);
-			gp.setWayId(1);
-
-			dbp.savePoint(gp);
-			dbp.close();
-		}
-
-		{
-			DBGpsPoint dbp = new DBGpsPoint(this.getApplicationContext());
-			dbp.open();
-			List<GpsPoint> list = dbp.getPointsbyWayId();
-
-			Toast.makeText(this.getApplicationContext(),
-					"size of list:" + list.size(), 2).show();
-
-			for (int i = 0; i < list.size(); i++) {
-				GpsPoint p = list.get(i);
-
-				Toast.makeText(this.getApplicationContext(), i + p.toString(),
-						2).show();
-			}
-
-			dbp.close();
-		}
-
-	}
-
-	public void netTest(View view) {
-		new Thread(new Runnable() {
-			public void run() {
-				DBGpsPoint dbp = new DBGpsPoint(getApplicationContext());
-				dbp.open();
-				List<GpsPoint> list = dbp.getPointsbyWayId();
-
-				GpsPointsSender sender = new GpsPointsSender(list, getThis());
-
-				sender.connect("192.168.1.2", 10000);
-
-				dbp.close();
-			}
-		}).start();
-
-	}
-
+    /// Return main activity 
+    /// Use this when you want to check using this
 	public MainActivity getThis() {
 		return this;
 	}
 
+    //// Load all preferences
 	public void loadPreferences() {
 		updateWeight();
 	}
 
+    /// Save all preferences
 	public void savePreferences(boolean isSetting) {
 		if (!isSetting) {
 			EditText et = (EditText) findViewById(R.id.weightEditText);
@@ -334,6 +321,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		}
 	}
 
+    /// It will be called when back button is clicked on settings menu 
 	public void backClicked(View view) {
 		if (view.getId() == R.id.backMainActivityfromSetting) {
 			savePreferences(true);
@@ -346,6 +334,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		stopBT.setEnabled(false);
 	}
 
+    /// It will be called when we have new location
 	@Override
 	public void newLocation(double lat, double lng, double alt) {
 		if (firstLoc) {
@@ -391,6 +380,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 		}
 	}
 
+    /// Call it to show user the gps is off
 	@Override
 	public void GpsIsTurnOff() {
 		dialog.cancel();
@@ -398,7 +388,8 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 				"Gps is turn off. Please turn it on and try again.",
 				Toast.LENGTH_LONG).show();
 	}
-
+    
+    
 	@Override
 	public void responseReady(String response) {
 		dialog.cancel();
@@ -408,6 +399,7 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 
 	}
 
+    /// Call it when an error is occurred
 	@Override
 	public void errorOccurred(String errorStr) {
 		dialog.cancel();
@@ -416,12 +408,14 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 				Toast.LENGTH_LONG).show();
 	}
 
+    /// Gps state is changed
 	@Override
 	public void GpsStateChanged(GpsState newState) {
 		// TODO Auto-generated method stub
 
 	}
-
+    
+    /// We use this to send json request to server
 	private class LongRunningGetIO extends AsyncTask<Void, Void, String> {
 		
 		private String json;
@@ -521,5 +515,9 @@ public class MainActivity extends Activity implements IGpsLocationListener,
 			
 		}
 
-	}
-}
+
+	} // end of inner class
+
+
+
+} // end of out class

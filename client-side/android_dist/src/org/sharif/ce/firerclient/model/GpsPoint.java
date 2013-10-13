@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import android.R.string;
 
+/// GPS point model
 public class GpsPoint {
 	
 	private double latitude;
@@ -21,6 +22,7 @@ public class GpsPoint {
 	
 	private int wayId;
 
+	
 	public double getLatitude() {
 		return latitude;
 	}
@@ -67,6 +69,7 @@ public class GpsPoint {
 				+ "| wayid:" + wayId + " in time:" + timeTag.toString();
 	}
 	
+	/// Return a json string from list of gps point
 	public static String getJson(List<GpsPoint> ps) throws JSONException {
 		
 		JSONArray points = new JSONArray();

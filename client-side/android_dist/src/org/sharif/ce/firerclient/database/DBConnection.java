@@ -25,15 +25,25 @@ public class DBConnection extends SQLiteOpenHelper{
 			+ GPS_POINT_DATABASE_TIME_TAG + " text" + ");";
 	
 	
+	/**
+	 * Create a connection and in sequential a db from context
+	 * @param context is 
+	 */
 	public DBConnection ( Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+	/**
+	 * Will call when new database is going to be created
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(GPS_POINT_DATABASE_CREATE);
 	}
 
+    /**
+     * call it when system upgrade
+     */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { 
 		db.execSQL("DROP TABLE IF EXISTS " + GPS_POINT_DATABASE_NAME );

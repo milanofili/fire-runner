@@ -13,19 +13,23 @@ public class DBWayPoint {
 	private DBConnection dbHelper;
 	private String[] wayColumn = {};
 	
+	/// List of point to describe a way from an start to related stop
     public DBWayPoint (Context context) {
     	this.context = context;
 		dbHelper = new DBConnection(context);
 	}
 	
+    /// Open db of gps points
 	public void open() throws SQLException {
 	    database = dbHelper.getWritableDatabase();
 	}
 	
+	/// Close db 
 	public void close() {
 	    dbHelper.close();
 	}
 	
+	/// Return last way plus one
 	public long getNewWayId() {
 		String query = String.format("SELECT %s from %s order by %s DESC limit 1", 
 				DBConnection.GPS_POINT_DATABASE_WAY_ID, DBConnection.GPS_POINT_DATABASE_NAME, DBConnection.GPS_POINT_DATABASE_WAY_ID);
