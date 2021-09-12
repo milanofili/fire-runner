@@ -1,7 +1,7 @@
-firer-runner
+fire-runner ( My bachelor thesis)
 ============
 
-Firer-Runner is a project can measure your calories when you are running by GPS.
+Fire-Runner is a project can measure your calories when you are running by GPS.
 
 #### Django + Python
 
