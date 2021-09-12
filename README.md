@@ -1,4 +1,4 @@
-fire-runner ( My bachelor thesis)
+fire-runner (my bachelor thesis)
 ============
 
 Fire-Runner is a project can measure your calories when you are running by GPS.
